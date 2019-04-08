@@ -1,0 +1,15 @@
+type Query {
+  user(id: ID!): User!
+  users(filter: String):[User!]
+  company(id: ID!): Company!
+  companies: [Company!]
+}
+
+type Mutation {
+  updateUser(user: UserInput!): User!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
