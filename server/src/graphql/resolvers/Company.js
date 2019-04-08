@@ -1,5 +1,3 @@
-import { getAllUsers } from '../../helpers';
-
 export default {
   employees: async (root, args, { ctx }, info) => {
     let employees = [];

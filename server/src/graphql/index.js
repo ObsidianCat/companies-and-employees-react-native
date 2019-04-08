@@ -10,10 +10,10 @@ export default new ApolloServer({
     };
   },
   formatError: error => {
-    //Can send it to some error tracking system (for example Sentry) here
+    //Place for error logging
     console.log(error);
 
-    //just basic example of removing potentially unsafe/revealing internal implementation message from production
+    //just basic example of removing potentially unsafe/revealing internal implementation message from production users
     if(process.env.prod){
       return 'Internal server error';
     }
