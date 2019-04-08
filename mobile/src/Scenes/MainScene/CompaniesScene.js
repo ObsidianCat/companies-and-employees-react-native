@@ -3,7 +3,7 @@ import {ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, View} from "r
 import {gql} from "apollo-boost";
 import {Query} from "react-apollo";
 import {ErrorScene, ListItem} from "../../components";
-
+import { COMPANY_BASE_FRAGMENT } from './UserScene'
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -13,13 +13,12 @@ const styles = StyleSheet.create({
 const query = gql`
     query Companies {
         companies {
-            id
+            ...CompanyBaseFragment
             color
-            name
-            image
             catchPhrase
         }
     }
+    ${COMPANY_BASE_FRAGMENT}
 `;
 
 export default class CompaniesScene extends PureComponent {

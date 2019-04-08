@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ({ message }) => (
+export default memo(({ message }) => (
   <View style={styles.container}>
     <Text style={styles.header}>An error occurred.</Text>
     <Text style={styles.body}>{message}</Text>
   </View>
-);
+));

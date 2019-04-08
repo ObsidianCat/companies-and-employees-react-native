@@ -17,18 +17,28 @@ import {
   ListItem
 } from '../../components';
 
-const query = gql`
-  query User($userId: ID!) {
-    user(id: $userId) {
-      id
-      color
-      name
-      email
-      image
-      company {
+export const USER_BASE_FRAGMENT = gql`
+    fragment UserBaseFragment on User {
         id
         name
         image
+        color
+    }`
+
+export const COMPANY_BASE_FRAGMENT = gql`
+    fragment CompanyBaseFragment on Company {
+        id
+        name
+        image
+    }`
+
+const query = gql`
+  query User($userId: ID!) {
+    user(id: $userId) {
+      ...UserBaseFragment
+      email
+      company {
+        ...CompanyBaseFragment
       }
       address {
         country
@@ -37,13 +47,12 @@ const query = gql`
         citySuffix
       }
       friends {
-        id
-        name
-        image
-        color
+        ...UserBaseFragment
       }
     }
   }
+  ${USER_BASE_FRAGMENT}
+  ${COMPANY_BASE_FRAGMENT}
 `;
 
 const styles = StyleSheet.create({

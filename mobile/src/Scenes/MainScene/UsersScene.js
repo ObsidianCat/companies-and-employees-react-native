@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-
+import { USER_BASE_FRAGMENT } from './UserScene'
 import { ErrorScene, ListItem } from '../../components';
 
 const styles = StyleSheet.create({
@@ -20,13 +20,11 @@ const styles = StyleSheet.create({
 const query = gql`
   query Users {
     users {
-      id
-      color
-      name
+      ...UserBaseFragment
       email
-      image
     }
   }
+  ${USER_BASE_FRAGMENT}
 `;
 
 export default class UsersScene extends PureComponent {

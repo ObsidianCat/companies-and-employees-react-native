@@ -3,23 +3,21 @@ import {gql} from "apollo-boost";
 import {ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View, ScrollView} from "react-native";
 import {Query} from "react-apollo";
 import {ErrorScene, OverviewUserListItem, CompanyFullOverview} from "../../components";
+import { USER_BASE_FRAGMENT, COMPANY_BASE_FRAGMENT } from './UserScene'
 
 const query = gql`
     query Company($companyId: ID!) {
         company(id: $companyId) {
-            id
+            ...CompanyBaseFragment
             color
-            name
             catchPhrase
-            image
             employees {
-                id
-                name
-                image
-                color
+                ...UserBaseFragment
             }
         }
     }
+    ${USER_BASE_FRAGMENT}
+    ${COMPANY_BASE_FRAGMENT}
 `;
 
 const styles = StyleSheet.create({
