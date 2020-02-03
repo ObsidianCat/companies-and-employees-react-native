@@ -3,7 +3,8 @@ Install the required packages.
 
 ```npm install```
 
-Startup the graphql server.
+Start the graphql server.
+
 ```npm start```
 
 # mobile
@@ -13,7 +14,7 @@ Install the required packages.
 
 ```npm install```
 
-###How to run on android emulator device
+### How to run on android emulator device
 Create an emulator device (from Android Studio) and run it. <br>
 In mobile/src/apollo.js change value of address to your IP address. In format  __http://000.000.0.0:5000/graphql__<br>
 
